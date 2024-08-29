@@ -7,6 +7,10 @@ description: A useful plugin that mimics Terraria minecarts
 commands:
   togglecart:
     description: toggle AutoMinecart on or off for a specific user
+    usage: /togglecart
+  toggleboat:
+    description: toggle AutoBoat on or off for a specific user
+    usage: /toggleboat
 permissions:
   autominecart.use:
     description: Allows a user to use this plugin

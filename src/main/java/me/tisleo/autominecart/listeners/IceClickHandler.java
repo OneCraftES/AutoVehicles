@@ -11,12 +11,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.Arrays;
 
-public class RailClickHandler implements Listener {
+public class IceClickHandler implements Listener {
 
     private final AutoMinecart plugin;
-    private static final Material[] validRails = {Material.RAIL, Material.DETECTOR_RAIL, Material.POWERED_RAIL};
+    private static final Material[] validBlocks = {Material.ICE, Material.PACKED_ICE, Material.BLUE_ICE};
 
-    public RailClickHandler(AutoMinecart plugin) {
+    public IceClickHandler(AutoMinecart plugin) {
         this.plugin = plugin;
     }
 
@@ -28,10 +28,16 @@ public class RailClickHandler implements Listener {
             return;
         }
 
-        Minecart minecart = p.getWorld().spawn(e.getClickedBlock().getLocation(), Minecart.class);
-        plugin.addMinecartUser(p);
-        minecart.addPassenger(p);
+        
+        Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
+        spawnLocation.setYaw(p.getLocation().getYaw());
+        spawnLocation.setPitch(p.getLocation().getPitch());
+
+        Boat boat = p.getWorld().spawn(spawnLocation, Boat.class);
+        plugin.addBoatUser(p);
+        boat.addPassenger(p);
     }
+
 
     /**
      * Checks whether the player is valid to create and use a new AutoMinecart. To be valid, the player must:
@@ -48,11 +54,10 @@ public class RailClickHandler implements Listener {
     private boolean manageValidity(Player p, PlayerInteractEvent e) {
         return !plugin.getConfig().getStringList("disabled_worlds").contains(p.getWorld().getName())
                 && (p.isOp() || p.hasPermission("autominecart.use"))
-                && (PlayerConfig.getPlayersFileConfig().getBoolean("players." + p.getUniqueId() + ".cart.toggled"))
+                && (PlayerConfig.getPlayersFileConfig().getBoolean("players." + p.getUniqueId() + ".boat.toggled"))
                 && !p.isInsideVehicle()
-                && (e.getAction() == Action.RIGHT_CLICK_BLOCK && Arrays.asList(validRails).contains(e.getClickedBlock().getType()) && p.getInventory().getItemInMainHand().getType().equals(Material.AIR));
+                && (e.getAction() == Action.RIGHT_CLICK_BLOCK && Arrays.asList(validBlocks).contains(e.getClickedBlock().getType()) && p.getInventory().getItemInMainHand().getType().equals(Material.AIR));
     }
-
 }
 
 

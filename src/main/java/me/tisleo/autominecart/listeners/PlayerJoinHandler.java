@@ -10,7 +10,8 @@ public class PlayerJoinHandler implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         if (!(PlayerConfig.getPlayersFileConfig().isSet("players." + e.getPlayer().getUniqueId()))) {
-            PlayerConfig.getPlayersFileConfig().set("players."+e.getPlayer().getUniqueId()+".toggled", true);
+            PlayerConfig.getPlayersFileConfig().set("players."+e.getPlayer().getUniqueId()+".cart.toggled", true);
+            PlayerConfig.getPlayersFileConfig().set("players."+e.getPlayer().getUniqueId()+".boat.toggled", true);
             PlayerConfig.savePlayerConfig();
             PlayerConfig.reloadPlayerConfig();
         }
