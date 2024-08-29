@@ -16,7 +16,7 @@ public class CommandToggleBoat implements CommandExecutor {
             return false;
         }
 
-        final boolean isToggled = PlayerConfig.getPlayersFileConfig().getBoolean("players."+((Player) sender).getUniqueId()+".toggled");
+        final boolean isToggled = PlayerConfig.getPlayersFileConfig().getBoolean("players."+((Player) sender).getUniqueId()+".boat.toggled");
         if (isToggled) {
             PlayerConfig.getPlayersFileConfig().set("players."+((Player) sender).getUniqueId()+".boat.toggled", false);
             PlayerConfig.savePlayerConfig();
