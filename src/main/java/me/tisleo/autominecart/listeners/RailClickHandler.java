@@ -27,8 +27,7 @@ public class RailClickHandler implements Listener {
         if (!manageValidity(p, e)) {
             return;
         }
-
-        Minecart minecart = p.getWorld().spawn(e.getClickedBlock().getLocation(), Minecart.class);
+        Minecart minecart = (Minecart) p.getWorld().spawnEntity(e.getClickedBlock().getLocation(), EntityType.MINECART);
         plugin.addMinecartUser(p);
         minecart.addPassenger(p);
     }

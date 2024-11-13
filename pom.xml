@@ -6,12 +6,12 @@
 
     <groupId>me.tisleo</groupId>
     <artifactId>AutoMinecart</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
     <packaging>jar</packaging>
 
     <name>AutoMinecart</name>
 
-    <description>A plugin that mimics Terraria minecarts.
+    <description>A plugin that mimics Terraria minecarts (+BOATS).
     </description>
     <properties>
         <java.version>1.8</java.version>
@@ -69,7 +69,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.21.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

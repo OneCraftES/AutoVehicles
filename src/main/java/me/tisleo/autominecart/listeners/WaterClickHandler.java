@@ -32,7 +32,8 @@ public class WaterClickHandler implements Listener {
         Location blockLocation = p.getLineOfSight(null, 5).get(0).getLocation();
         blockLocation.setYaw(p.getLocation().getYaw());
         blockLocation.setPitch(p.getLocation().getPitch());
-        Boat boat = p.getWorld().spawn(blockLocation, Boat.class);
+
+        Boat boat = (Boat) p.getWorld().spawnEntity(blockLocation, EntityType.OAK_BOAT);
         plugin.addBoatUser(p);
         boat.addPassenger(p);
     }

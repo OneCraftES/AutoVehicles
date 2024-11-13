@@ -33,7 +33,7 @@ public class IceClickHandler implements Listener {
         spawnLocation.setYaw(p.getLocation().getYaw());
         spawnLocation.setPitch(p.getLocation().getPitch());
 
-        Boat boat = p.getWorld().spawn(spawnLocation, Boat.class);
+        Boat boat = (Boat) p.getWorld().spawnEntity(spawnLocation, EntityType.OAK_BOAT);
         plugin.addBoatUser(p);
         boat.addPassenger(p);
     }
