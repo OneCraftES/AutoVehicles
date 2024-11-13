@@ -4,6 +4,7 @@ import me.tisleo.autominecart.AutoMinecart;
 import me.tisleo.autominecart.PlayerConfig;
 import org.bukkit.*;
 import org.bukkit.entity.*;
+import org.bukkit.entity.boat.OakBoat;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -28,12 +29,11 @@ public class IceClickHandler implements Listener {
             return;
         }
 
-        
         Location spawnLocation = e.getClickedBlock().getLocation().add(0, 1, 0);
         spawnLocation.setYaw(p.getLocation().getYaw());
         spawnLocation.setPitch(p.getLocation().getPitch());
 
-        Boat boat = (Boat) p.getWorld().spawnEntity(spawnLocation, EntityType.OAK_BOAT);
+        Boat boat = p.getWorld().spawn(spawnLocation, OakBoat.class);
         plugin.addBoatUser(p);
         boat.addPassenger(p);
     }

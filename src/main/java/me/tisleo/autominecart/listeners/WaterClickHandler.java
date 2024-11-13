@@ -6,6 +6,7 @@ import me.tisleo.autominecart.PlayerConfig;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
+import org.bukkit.entity.boat.OakBoat;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -33,7 +34,7 @@ public class WaterClickHandler implements Listener {
         blockLocation.setYaw(p.getLocation().getYaw());
         blockLocation.setPitch(p.getLocation().getPitch());
 
-        Boat boat = (Boat) p.getWorld().spawnEntity(blockLocation, EntityType.OAK_BOAT);
+        Boat boat = p.getWorld().spawn(blockLocation, OakBoat.class);
         plugin.addBoatUser(p);
         boat.addPassenger(p);
     }
